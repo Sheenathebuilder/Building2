@@ -1,0 +1,67 @@
+ Account Lockout & Unlock Simulation LObjective
+Simulate a real-world helpdesk scenario where a user account becomes locked due to multiple failed login attempts, then perform the proper administrative steps to unlock the account.
+
+ Scenario
+
+A user reports:
+ “I can’t log in. It says my account is locked.”
+
+This lab simulates that ticket and documents the resolution process.
+
+ Steps Performed
+
+ 1. Configured Account Lockout Policy
+
+Using Local Security Policy:
+
+Opened `secpol.msc`
+Navigated to:
+  Account Policies → Account Lockout Policy
+Configured:
+  Account lockout threshold: 3 invalid attempts
+  Lockout duration: 15 minutes
+  Reset lockout counter after: 15 minutes
+
+This simulates a real corporate security configuration.
+
+
+
+2. Triggered Account Lockout
+
+- Attempted to log in as `helpdesk_test`
+- Entered incorrect password 3 times
+- Account became locked as expected
+
+ 3. Verified and Unlocked the Account
+
+Logged in as administrator (`azureadmin`):
+
+- Opened `lusrmgr.msc`
+- Navigated to:
+  Local Users and Groups → Users
+- Opened the affected account
+- Confirmed “Account is locked out”
+- Unchecked the lockout box
+- Applied changes
+
+User was then able to successfully log in.
+
+ Skills Demonstrated
+
+- Windows Server user account management
+- Account lockout policy configuration
+- Security policy navigation
+- Troubleshooting authentication issues
+- Administrative privilege usage
+- Real-world helpdesk workflow simulation
+
+
+ Real-World Relevance
+
+Account lockouts are one of the most common helpdesk tickets in enterprise environments.  
+This lab demonstrates the ability to:
+
+- Diagnose authentication problems
+- Understand security policies
+- Safely restore user access
+- Follow proper administrative procedures
